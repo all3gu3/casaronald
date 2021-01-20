@@ -2,7 +2,7 @@
 
 //use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route; 
-use App\Http\Controllers\ApiFamiliaController; # don't forgot to add this
+use App\Http\Controllers\ApiNinoController; # don't forgot to add this
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,5 +10,5 @@ Route::get('/', function () {
 
 //Auth::routes();
 
-Route::get('/get-familia/{id}', 'App\Http\Controllers\ApiFamiliaController@getFamilia')->name('get-familia');
-Route::get('/get-familias-datatable', 'App\Http\Controllers\ApiFamiliaController@getFamiliasDataTable')->name('get-familias-datatable');
+Route::get('/get-nino/{id}', 'App\Http\Controllers\ApiNinoController@getNino')->name('get-nino');
+Route::get('/get-ninos-datatable', 'App\Http\Controllers\ApiNinoController@getNinosDataTable')->name('get-ninos-datatable');

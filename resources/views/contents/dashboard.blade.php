@@ -17,17 +17,31 @@
 
 <div class="container tablita">
 
-    <h1>Familias</h1>
+    <h1>Expediente | Niños</h1>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Concentrado general de niños albergados en casa Ronald McDonald Puebla</p>
+        </div>
+        <div class="col-md-6" style="text-align: right;"> 
+            <button class="btn botoncito">Agregar Niño<i class="fa fa-user-plus"></i></button>
+        </div>
+    </div>
+    <br>
 
     <table class="table table-bordered data-table">
         <thead>
             <tr>
                 <th>N° de Registro</th>
-                <th>Código QR</th>
-                <th>País</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Sexo</th>
+                <th>Escolaridad</th>
                 <th>Estado</th>
                 <th>Municipio</th>
-                <th width="100px">Action</th>
+                <th>QR</th>
+                <th>Ver QR</th>
+                <th>Ver Niño</th>
             </tr>
         </thead>
         <tbody>
@@ -38,10 +52,16 @@
 
 <!--sidebar start-->
 <div class="sidebar" id="theTarget">
-
-    <a href="#"><i class="fas"><img src="{{asset('images/icons/w_profile.png')}}" height="25px"></i><span>Perfil</span></a>
     <br>
-    <a href="#" id="open_btn"><i class="fas"><img id="checking" src="{{asset('images/icons/w_open.png')}}" height="25px"></i><span>Contraer</span></a>
+    <a href="#"><i class="fa fa-user-circle"></i><span>Perfil</span></a>
+    <br>
+    <a href="#"><i class="fa fa-users"></i><span>Familias</span></a>
+    <br>
+    <a href="#"><i class="fas fa-address-book"></i><span>Registros</span></a>
+    <br>
+    <a href="#"><i class="fas fa-calendar"></i><span>Operación</span></a>
+    <br>
+    <a href="#" id="open_btn"><i class="fa fa-bars"><img id="checking" src="{{asset('images/icons/w_open.png')}}" height="0px"></i><span>Contraer</span></a>
     
 </div>
 <!--sidebar end-->
@@ -55,11 +75,13 @@
         if(img_src == "http://localhost/casaronald/casaronald/public/images/icons/w_open.png") {
             //alert("is checked!");
             $( "#check" ).prop( "checked", false );
+            $('.tablita').css({'margin-left':'12.6%'});
             $('#checking').attr('src',"http://localhost/casaronald/casaronald/public/images/icons/w_close.png");
         }
         else{
             //alert("is NOT checked!");
             $( "#check" ).prop( "checked", true );
+            $('.tablita').css({'margin-left':'7%'});
             $('#checking').attr('src',"http://localhost/casaronald/casaronald/public/images/icons/w_open.png");
         }
     });
@@ -71,14 +93,18 @@
       var table = $('.data-table').DataTable({
           processing: true,
           serverSide: true,
-          ajax: "{{ route('get-familias-datatable') }}",
+          ajax: "{{ route('get-ninos-datatable') }}",
           columns: [
               {data: 'id', name: 'id'},
-              {data: 'qr', name: 'qr'},
-              {data: 'pais', name: 'pais'},
-              {data: 'estado', name: 'estado'},
+              {data: 'nombre', name: 'nombre'},
+              {data: 'edad', name: 'edad'},
+              {data: 'sexo', name: 'sexo'},
+              {data: 'escolaridad', name: 'escolaridad'},
+              {data: 'estado', name: 'estadp'},
               {data: 'municipio', name: 'municipio'},
-              {data: 'action', name: 'action', orderable: false, searchable: false},
+              {data: 'qr', name: 'qr'},
+              {data: 'ver_qr', name: 'ver_qr', orderable: false, searchable: false},
+              {data: 'ver_nino', name: 'ver_nino', orderable: false, searchable: false},
           ]
       });
     });
