@@ -10,11 +10,17 @@
 	 format("ttf");
 }
 
+@font-face{
+	font-family: raleway;
+	 src:url(../assets/Raleway-Medium.ttf);
+	 format("ttf");
+}
+
 body{
     
     background-color: #FFF;
-    color: #a4b494;
-    font-family: "Roboto", sans-serif;
+    color: #666666;
+    font-family: raleway;
   }
   
   header{
@@ -26,6 +32,10 @@ body{
     height: 10%;
   }
   
+  .botoncito{
+    background-color: #FFC829;
+  }
+
   .left_area h3{
     color: #fff;
     margin: 0;
@@ -35,16 +45,16 @@ body{
   }
   
   .left_area span{
-    color: #19B3D3;
+    color: #FFC829;
   }
 
   .tablita{
-    margin-left: 10%;
+    margin-left: 12.6%;
   }
   
   .logout_btn{
     padding: 5px;
-    background: #19B3D3;
+    background: #FFC829;
     text-decoration: none;
     float: right;
     margin-top: -30px;
@@ -62,12 +72,12 @@ body{
   }
   
   .sidebar {
-    background: #da1a00;
+    background: #4872ae;
     padding-top: 30px;
     position: fixed;
     left: 0;
     top: 0;
-    width: 200px;
+    width: 175px;
     height: 100%;
     transition: 0.5s;
     transition-property: left;
@@ -81,7 +91,7 @@ body{
   }
   
   .sidebar h4{
-    font-family: retron;
+    font-family: raleway;
     font-size: 17px;
     color: #ccc;
     margin-top: 0;
@@ -89,7 +99,7 @@ body{
   }
   
   .sidebar a{
-    font-family: retron;
+    font-family: raleway;
     color: #fff;
     display: block;
     width: 100%;
@@ -110,7 +120,7 @@ body{
   }
 
   .sidebar a:hover{
-    background: #19B3D3;
+    background: #FFC829;
   }
   
   .sidebar i{
@@ -130,11 +140,11 @@ body{
   }
   
   label #sidebar_btn:hover{
-    color: #19B3D3;
+    color: #FFC829;
   }
   
   #check:checked ~ .sidebar{
-    left: -140px;
+    left: -115px;
   }
   
   #check:checked ~ .sidebar a span{
@@ -146,7 +156,7 @@ body{
   
   #check:checked ~ .sidebar a{
     font-size: 20px;
-    margin-left: 120px;
+    margin-left: 95px;
     width: 80px;
   }
   
