@@ -6,9 +6,6 @@ use Illuminate\Database\Seeder;
 use App\Pais;
 use App\Estado;
 use App\Municipio;
-use App\Familia;
-use App\Role;
-use App\Integrante;
 use App\ClasificacionSocial;
 use App\EdoSalud;
 use App\Escolaridad;
@@ -22,6 +19,10 @@ use App\TipoTratamiento;
 use App\TrabajadorSocial;
 use App\Zona;
 
+use App\Nino;
+use App\Acompanante;
+use App\RegistroOperativo;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -34,9 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PaisTableSeeder::class);
         $this->call(EstadoTableSeeder::class);
         $this->call(MunicipioTableSeeder::class);
-        $this->call(FamiliaTableSeeder::class);
-        $this->call(RoleTableSeeder::class);
-        $this->call(IntegranteTableSeeder::class);
         $this->call(ClasificacionSocialTableSeeder::class);
         $this->call(EdoSaludTableSeeder::class);
         $this->call(EscolaridadTableSeeder::class);
@@ -49,6 +47,10 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoTratamientoTableSeeder::class);
         $this->call(TrabajadorSocialTableSeeder::class);
         $this->call(ZonaTableSeeder::class);
+
+        $this->call(NinoTableSeeder::class);
+        $this->call(AcompananteTableSeeder::class);
+        $this->call(RegistroOperativoTableSeeder::class);
         $this->command->info("Semilla plantada");
     }
 }
@@ -182,27 +184,6 @@ class MunicipioTableSeeder extends Seeder {
     }
   }
 
-
-  class RoleTableSeeder extends Seeder {
-    public function run(){
-      Role::create(['role' => 'Hijo']);
-      Role::create(['role' => 'Mamá']);
-    }
-}
-class IntegranteTableSeeder extends Seeder {
-    public function run(){
-      Integrante::create(['familia_id' => '1', 'role_id' => '2', 'nombre' => 'Alejandra', 'apellidos' => 'Sánchez Martínez', 'es_paciente' => 0, 'fecha_nacimiento' => '1979-01-19 00:00:00']);
-      Integrante::create(['familia_id' => '1', 'role_id' => '1', 'nombre' => 'Carlos Alejandro', 'apellidos' => 'García Sánchez', 'es_paciente' => 1, 'fecha_nacimiento' => '2007-05-20 00:00:00']);
-    }
-}
-class FamiliaTableSeeder extends Seeder {
-  public function run(){
-    Familia::create(['qr' => 'A1B2C3', 'municipio_id' => '1', 'estado_id' => '12', 'pais_id' => '1']);
-    Familia::create(['qr' => 'A1F2C3', 'municipio_id' => '5', 'estado_id' => '12', 'pais_id' => '1']);
-    Familia::create(['qr' => 'A1B2X3', 'municipio_id' => '7', 'estado_id' => '12', 'pais_id' => '1']);
-    Familia::create(['qr' => 'A1B1C5', 'municipio_id' => '8', 'estado_id' => '12', 'pais_id' => '1']);
-  }
-}
 class ClasificacionSocialTableSeeder extends Seeder {
   public function run(){
     ClasificacionSocial::create(['clasificacion_social' => '1']);
@@ -413,5 +394,31 @@ class ZonaTableSeeder extends Seeder {
     Zona::create(['zona' => 'Rural']);
     Zona::create(['zona' => 'Sub-urbana']);
     Zona::create(['zona' => 'Urbana']);
+  }
+}
+
+class NinoTableSeeder extends Seeder {
+  public function run(){
+    Nino::create(['qr' => 'A1B2C3', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Uno',  'fecha_nacimiento' => '2007-01-19 00:00:00', 'edad'=>'13', 'sexo'=>'M', 'calle'=>'Jacarandas', 'numero'=>'15', 'localidad'=>'San Juan de las Manzanas', 'cp'=>'66278', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Ninguno', 'escolaridad_id' => '1', 'clasificacion_social_id' => '1', 'salario_minimo_id' => '1', 'zona_id' => '1',  'municipio_id' => '1', 'estado_id' => '12', 'pais_id' => '1']);
+    Nino::create(['qr' => 'J1B2X7', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Dos',  'fecha_nacimiento' => '2008-01-19 00:00:00', 'edad'=>'12', 'sexo'=>'M', 'calle'=>'Tabachines', 'numero'=>'16', 'localidad'=>'San Juan de las Peras', 'cp'=>'66486', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Ninguno', 'escolaridad_id' => '2', 'clasificacion_social_id' => '2', 'salario_minimo_id' => '2', 'zona_id' => '2',  'municipio_id' => '2', 'estado_id' => '12', 'pais_id' => '1']);
+    Nino::create(['qr' => 'B1S2C3', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Tres',  'fecha_nacimiento' => '2009-01-19 00:00:00', 'edad'=>'11', 'sexo'=>'F', 'calle'=>'Primaveras', 'numero'=>'17', 'localidad'=>'San Juan de las Tunas', 'cp'=>'66147', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Maya', 'escolaridad_id' => '3', 'clasificacion_social_id' => '2', 'salario_minimo_id' => '2', 'zona_id' => '1',  'municipio_id' => '3', 'estado_id' => '12', 'pais_id' => '1']);
+    Nino::create(['qr' => 'A9B215', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Cuatro',  'fecha_nacimiento' => '2010-01-19 00:00:00', 'edad'=>'10', 'sexo'=>'M', 'calle'=>'Bugambilias', 'numero'=>'18', 'localidad'=>'San Juan de los Duraznos', 'cp'=>'66299', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Ninguno', 'escolaridad_id' => '1', 'clasificacion_social_id' => '1', 'salario_minimo_id' => '1', 'zona_id' => '2',  'municipio_id' => '4', 'estado_id' => '12', 'pais_id' => '1']);
+    
+  }
+}
+
+class AcompananteTableSeeder extends Seeder {
+  public function run(){
+    Acompanante::create(['nombre' => 'Ronaldiño', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Uno', 'edad'=>'34', 'sexo'=>'F', 'parentesco_id'=> 2, 'escolaridad_id'=> 1, 'nino_id'=> 1, 'edo_salud_id'=> 1, 'ocupacion_id'=> 2, 'trabaja'=> 1, 'licencia_goce_sueldo'=> 1, 'seguro_medico'=> 1, 'casa_propia'=> 0, 'asistencia_financiera'=> 0, 'renta_mensualidad'=> 2000, 'dependientes_economicos'=> 3, 'ingreso_mensual'=> 5000  ]);
+    Acompanante::create(['nombre' => 'Ronaldiño', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Dos', 'edad'=>'45', 'sexo'=>'F', 'parentesco_id'=> 2, 'escolaridad_id'=> 2, 'nino_id'=> 1, 'edo_salud_id'=> 1, 'ocupacion_id'=> 2, 'trabaja'=> 1, 'licencia_goce_sueldo'=> 1, 'seguro_medico'=> 1, 'casa_propia'=> 0, 'asistencia_financiera'=> 1, 'renta_mensualidad'=> 2500, 'dependientes_economicos'=> 4, 'ingreso_mensual'=> 4500  ]);
+    Acompanante::create(['nombre' => 'Ronaldiño', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Tres', 'edad'=>'51', 'sexo'=>'F', 'parentesco_id'=> 4, 'escolaridad_id'=> 4, 'nino_id'=> 2, 'edo_salud_id'=> 1, 'ocupacion_id'=> 3, 'trabaja'=> 1, 'licencia_goce_sueldo'=> 1, 'seguro_medico'=> 1, 'casa_propia'=> 1, 'asistencia_financiera'=> 0, 'renta_mensualidad'=> 6000, 'dependientes_economicos'=> 7, 'ingreso_mensual'=> 3900  ]);
+    Acompanante::create(['nombre' => 'Ronaldiño', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Cuatro', 'edad'=>'29', 'sexo'=>'M', 'parentesco_id'=> 1, 'escolaridad_id'=> 1, 'nino_id'=> 3, 'edo_salud_id'=> 1, 'ocupacion_id'=> 1, 'trabaja'=> 0, 'licencia_goce_sueldo'=> 1, 'seguro_medico'=> 1, 'casa_propia'=> 1, 'asistencia_financiera'=> 1, 'renta_mensualidad'=> 1700, 'dependientes_economicos'=> 1, 'ingreso_mensual'=> 5340 ]);
+  }
+}
+
+class RegistroOperativoTableSeeder extends Seeder {
+  public function run(){
+    RegistroOperativo::create(['nino_id' => 1, 'hospital_id' => 1, 'tipo_ninio_id' => 1, 'tipo_tratamiento_id' => 1, 'tipo_dieta_id' => 1, 'trabajador_social_id' => 1, 'fecha_ingreso' => '2020-01-19 00:00:00', 'fecha_egreso' => '2020-01-23 00:00:00', 'medico_atiende' => "Dr. Ronald McDonald", 'diagnostico' => 'Síndrome de Regresión Caudal', 'reingreso' => 1, 'ninos_adicionales' => 0, 'habitacion' => 3, 'observaciones' => "Primer reingreso, nada más que decir"]);
+    RegistroOperativo::create(['nino_id' => 2, 'hospital_id' => 4, 'tipo_ninio_id' => 1, 'tipo_tratamiento_id' => 1, 'tipo_dieta_id' => 3, 'trabajador_social_id' => 5, 'fecha_ingreso' => '2020-01-19 00:00:00', 'fecha_egreso' => '2020-01-20 00:00:00', 'medico_atiende' => "Dr. Ronald McDonald", 'diagnostico' => 'Hidrocefalia', 'reingreso' => 1, 'ninos_adicionales' => 0, 'habitacion' => 1]);
   }
 }
