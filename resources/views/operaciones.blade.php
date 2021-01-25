@@ -9,5 +9,5 @@
 	{{--@include('parts.navs')
 	@include('contents.index')--}}
 	@include('parts.sidebar')
-    @include('dashboards.inicio')
+    @include('dashboards.operacion')
 @endsection

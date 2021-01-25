@@ -9,5 +9,6 @@
 	{{--@include('parts.navs')
 	@include('contents.index')--}}
 	@include('parts.sidebar')
-    @include('dashboards.inicio')
+	@include('forms.nino')
+	@include('datatables.ninos')
 @endsection

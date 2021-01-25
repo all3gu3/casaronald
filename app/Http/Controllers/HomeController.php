@@ -11,8 +11,30 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('index')
+    public function inicio(){
+        return view('inicio');
     }
+    public function familias(){
+        return view('familias');
+    }
+    public function registros(){
+        return view('registros');
+    }
+    public function operaciones(){
+        return view('operaciones');
+    }
+
+    public function lavanderia(){
+        return view('datatables.lavanderia');
+    }
+    public function comedor(){
+        return view('datatables.comedor');
+    }
+    public function escuela(){
+        return view('datatables.escuela');
+    }
+    public function entradasSalidas(){
+        return view('datatables.entradas_salidas');
+    }
+
 }
