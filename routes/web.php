@@ -22,6 +22,10 @@ Route::get('/operaciones', 'App\Http\Controllers\HomeController@operaciones')->n
 // Auxiliares
 Route::get('/get-qr', 'App\Http\Controllers\AuxiliaresController@getQr')->name('get-qr');
 
+// Qr
+Route::get('/get-ficha/{id?}', 'App\Http\Controllers\QrController@ficha')->name('get-ficha');
+
+
 // API
 /*Niños*/ 
 Route::get('/get-nino/{id}', 'App\Http\Controllers\ApiNinoController@getNino')->name('get-nino');

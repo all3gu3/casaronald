@@ -10,10 +10,6 @@ use Yajra\DataTables\DataTables;
 class ApiNinoController extends Controller
 {
 
-    public function index(){
-        return view('contents.nino');
-    }
-
     /// Reglas de validación: https://laravel.com/docs/7.x/validation#available-validation-rules
     public function store(Request $request)
     {
@@ -44,6 +40,34 @@ class ApiNinoController extends Controller
     public function getNino($id){
         $nino = Nino::where('id', $id)->with(['pais','estado', 'municipio'])->first();
         return response()->json($nino);
+    }
+
+    public function getNinoByQr(Request $request){
+        $nino = Nino::where('qr', $request->qr)->with(['pais','estado', 'municipio'])->first();
+        $response = array();
+        $response['nombre_completo'] = $nino->nombre . " " . $nino->apellido_paterno . " " . $nino->apellido_materno;
+
+        $response['estado'] = $nino->estado['estado'];
+        $response['municipio'] = $nino->municipio['municipio'];
+
+        if($nino->sexo == 'M') { $response['sexo'] = "Masculino";}
+        else if($nino->sexo == 'F') { $response['sexo'] = "Femenino";}
+        else {$response['sexo'] = "Indefinido";}
+
+        $response['edad'] = $nino->edad;
+
+        $response['parientes']=array();
+
+        foreach($nino->acompanantes as $i => $acompanante){
+            $response['parientes'][$i]['nombre_completo'] = $nino->acompanantes[$i]['nombre']. " " . $nino->acompanantes[$i]['apellido_paterno'] . " " . $nino->acompanantes[$i]['apellido_materno'];
+            $response['parientes'][$i]['edad'] = $nino->acompanantes[$i]['edad'];
+
+            if($nino->acompanantes[$i]['sexo'] == 'M') { $response['parientes'][$i]['sexo'] = "Masculino";}
+            else if($nino->acompanantes[$i]['sexo'] == 'F') { $response['parientes'][$i]['sexo'] = "Femenino";}
+            else {$response['parientes'][$i]['sexo'] = "Indefinido";}
+        }
+
+        return response()->json($response);
     }
 
     public function update(Request $request, Nino $nino)
@@ -126,7 +150,7 @@ class ApiNinoController extends Controller
             return Datatables::of($response)
                     ->addIndexColumn()
                     ->addColumn('ver_qr', function($row){
-                        $btn = '<a href="javascript:void(0)" class="btn"><i class="fa fa-qrcode"></i></a>';
+                        $btn = '<button class="btn fichita" onClick="showModal(1);" data-target="#qrModal" data-toggle="modal" data-backdrop="false"><i class="fa fa-qrcode"></i></button>';
                         return $btn;
                     })
                     ->addColumn('ver_nino', function($row){

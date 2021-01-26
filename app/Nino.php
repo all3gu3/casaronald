@@ -20,8 +20,16 @@ class Nino extends Model
     	return $this->belongsTo('App\Municipio');
     }
 
+    public function hospital(){
+    	return $this->belongsTo('App\Hospital');
+    }
+
     public function escolaridad(){
     	return $this->belongsTo('App\Escolaridad');
+    }
+
+    public function acompanantes(){
+    	return $this->hasMany('App\Acompanante');
     }
 
 
@@ -34,6 +42,10 @@ class Nino extends Model
         if(!empty($nino->id))
             return $nino;
         return null;
+    }
+
+    public static function validaQR(){
+        return 1;
     }
 
     /*
