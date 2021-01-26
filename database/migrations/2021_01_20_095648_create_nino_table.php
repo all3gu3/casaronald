@@ -19,16 +19,40 @@ class CreateNinoTable extends Migration
             $table->string('nombre');
             $table->string('apellido_paterno');
             $table->string('apellido_materno');
-            $table->string('fecha_nacimiento');
+            $table->date('fecha_nacimiento');
             $table->string('edad');
             $table->string('sexo');
             $table->string('calle');
-            $table->integer('numero');
+            $table->integer('numero');        
             $table->string('localidad');
             $table->string('cp');
             $table->string('primer_telefono');
             $table->string('segundo_telefono');
             $table->string('dialecto');
+            
+            
+            
+            $table->string('diagnostico')->nullable();
+            $table->string('medico')->nullable();
+            $table->string('alerg_alimentos')->nullable();
+            $table->string('alerg_medicamentos')->nullable();
+            $table->string('colonia')->nullable();
+            $table->string('observaciones')->nullable();
+            $table->string('servicio')->nullable();
+            $table->string('estatus_estancia')->nullable();
+            $table->date('fecha_solicitud')->nullable();
+            $table->date('fecha_ingreso')->nullable();
+            $table->date('fecha_salida')->nullable();
+            
+            $table->unsignedBigInteger('trabajador_social_id');
+            $table->foreign('trabajador_social_id')->references('id')->on('trabajador_social');
+            $table->unsignedBigInteger('tipo_dieta_id');
+            $table->foreign('tipo_dieta_id')->references('id')->on('tipo_dieta');
+            $table->unsignedBigInteger('hospital_id');
+            $table->foreign('hospital_id')->references('id')->on('hospital');
+            
+            
+            
             $table->unsignedBigInteger('escolaridad_id');
             $table->foreign('escolaridad_id')->references('id')->on('escolaridad');
             $table->unsignedBigInteger('clasificacion_social_id');

@@ -23,6 +23,9 @@ class CreateAcompananteTable extends Migration
             $table->string('identificacion')->nullable();
             $table->string('tratamiento')->nullable();
 
+            $table->date('fecha_registro');
+            $table->string('observaciones')->nullable();
+
             $table->unsignedBigInteger('parentesco_id');
             $table->foreign('parentesco_id')->references('id')->on('parentesco');
             $table->unsignedBigInteger('escolaridad_id');
