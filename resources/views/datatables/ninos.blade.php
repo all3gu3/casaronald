@@ -32,7 +32,16 @@
     </table>
     <br>
 
-<script type="text/javascript">
+<script>
+
+    function showModal(id){
+        $.get("{{route('get-ficha')}}/"+id, function(myData){ 
+        }, "json");
+
+        var srcc = "http://localhost/casaronald/casaronald/storage/app/public/carnes/"+id+".jpg"
+        $('#ficha').attr('src',srcc);
+    
+    }
 
     $(function () {
       var table = $('.data-table').DataTable({
@@ -48,11 +57,13 @@
               {data: 'estado', name: 'estadp'},
               {data: 'municipio', name: 'municipio'},
               {data: 'qr', name: 'qr'},
-              {data: 'ver_qr', name: 'ver_qr', orderable: false, searchable: false},
+              {data: 'id', name:'ver_qr2', render:function(data){
+                            return '<button class="btn fichita" onClick="showModal('+data+');" data-target="#qrModal" data-toggle="modal" data-backdrop="false"><i class="fa fa-qrcode"></i></button>';
+                        }},
               {data: 'ver_nino', name: 'ver_nino', orderable: false, searchable: false},
           ]
       });
-    });
+    });   
   </script>
 
  

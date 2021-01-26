@@ -8,6 +8,9 @@ class Acompanante extends Model
 {
     protected $table = 'acompanante';
 
+    public function nino(){
+    	return $this->belongsTo('App\Nino');
+    }
 
     public static function store($request)
     {

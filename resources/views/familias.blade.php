@@ -8,6 +8,7 @@
 @section('content')
 	{{--@include('parts.navs')
 	@include('contents.index')--}}
+	@include('forms.ficha')
 	@include('parts.sidebar')
 	@include('forms.nino')
 	@include('datatables.ninos')

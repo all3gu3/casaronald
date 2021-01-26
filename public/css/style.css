@@ -23,6 +23,9 @@ body{
     font-family: raleway;
   }
   
+  .modal-backdrop{
+    position: relative; 
+   }
   header{
     /*position: fixed;*/
     left: 0;
