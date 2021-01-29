@@ -18,6 +18,7 @@ use App\TipoNinio;
 use App\TipoTratamiento;
 use App\TrabajadorSocial;
 use App\Zona;
+use App\Tratamiento;
 
 use App\Nino;
 use App\Acompanante;
@@ -47,6 +48,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoTratamientoTableSeeder::class);
         $this->call(TrabajadorSocialTableSeeder::class);
         $this->call(ZonaTableSeeder::class);
+        $this->call(TratamientoTableSeeder::class);
 
         $this->call(NinoTableSeeder::class);
         $this->call(AcompananteTableSeeder::class);
@@ -389,6 +391,7 @@ class TrabajadorSocialTableSeeder extends Seeder {
     TrabajadorSocial::create(['trabajador_social' => 'Dr. Ivonn Benítez']);
   }
 }
+
 class ZonaTableSeeder extends Seeder {
   public function run(){
     Zona::create(['zona' => 'Rural']);
@@ -397,12 +400,33 @@ class ZonaTableSeeder extends Seeder {
   }
 }
 
+class TratamientoTableSeeder extends Seeder {
+  public function run(){
+    Tratamiento::create(["nombre"=> "Terapia"]);    
+		Tratamiento::create(["nombre"=> "Tratamiento"]);    
+		Tratamiento::create(["nombre"=> "Estudios de laboratorio"]);    
+		Tratamiento::create(["nombre"=> "Valoracion Medica"]);    
+		Tratamiento::create(["nombre"=> "Estudios de Gabinete"]);    
+		Tratamiento::create(["nombre"=> "Rehabilitacion"]);
+		Tratamiento::create(["nombre"=> "Consulta externa"]);    
+		Tratamiento::create(["nombre"=> "Cirugia"]); 
+		Tratamiento::create(["nombre"=> "Observacion-Urgencias"]);    
+		Tratamiento::create(["nombre"=> "Pre-Hospitalizacion"]);    
+		Tratamiento::create(["nombre"=> "Hospitalizacion"]);
+		Tratamiento::create(["nombre"=> "Terapia UCIN"]);    
+		Tratamiento::create(["nombre"=> "Terapia T int"]);    
+		Tratamiento::create(["nombre"=> "Terapia UCIA"]);    
+		Tratamiento::create(["nombre"=> "Post-Hospitalizacion"]);    
+		Tratamiento::create(["nombre"=> "Otro"]);
+  }
+}
+
 class NinoTableSeeder extends Seeder {
   public function run(){
-    Nino::create(['qr' => 'A1B2C3', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Uno',  'fecha_nacimiento' => '2007-01-19 00:00:00', 'edad'=>'13', 'sexo'=>'M', 'calle'=>'Jacarandas', 'numero'=>'15', 'localidad'=>'San Juan de las Manzanas', 'cp'=>'66278', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Ninguno', 'escolaridad_id' => '1', 'clasificacion_social_id' => '1', 'salario_minimo_id' => '1', 'zona_id' => '1',  'municipio_id' => '1', 'estado_id' => '12', 'pais_id' => '1', 'trabajador_social_id' => '1', 'tipo_dieta_id' => '2', 'hospital_id' => '1']);
-    Nino::create(['qr' => 'J1B2X7', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Dos',  'fecha_nacimiento' => '2008-01-19 00:00:00', 'edad'=>'12', 'sexo'=>'M', 'calle'=>'Tabachines', 'numero'=>'16', 'localidad'=>'San Juan de las Peras', 'cp'=>'66486', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Ninguno', 'escolaridad_id' => '2', 'clasificacion_social_id' => '2', 'salario_minimo_id' => '2', 'zona_id' => '2',  'municipio_id' => '2', 'estado_id' => '12', 'pais_id' => '1', 'trabajador_social_id' => '2', 'tipo_dieta_id' => '1', 'hospital_id' => '3']);
-    Nino::create(['qr' => 'B1S2C3', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Tres',  'fecha_nacimiento' => '2009-01-19 00:00:00', 'edad'=>'11', 'sexo'=>'F', 'calle'=>'Primaveras', 'numero'=>'17', 'localidad'=>'San Juan de las Tunas', 'cp'=>'66147', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Maya', 'escolaridad_id' => '3', 'clasificacion_social_id' => '2', 'salario_minimo_id' => '2', 'zona_id' => '1',  'municipio_id' => '3', 'estado_id' => '12', 'pais_id' => '1', 'trabajador_social_id' => '1', 'tipo_dieta_id' => '2', 'hospital_id' => '1']);
-    Nino::create(['qr' => 'A9B215', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Cuatro',  'fecha_nacimiento' => '2010-01-19 00:00:00', 'edad'=>'10', 'sexo'=>'M', 'calle'=>'Bugambilias', 'numero'=>'18', 'localidad'=>'San Juan de los Duraznos', 'cp'=>'66299', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Ninguno', 'escolaridad_id' => '1', 'clasificacion_social_id' => '1', 'salario_minimo_id' => '1', 'zona_id' => '2',  'municipio_id' => '4', 'estado_id' => '12', 'pais_id' => '1', 'trabajador_social_id' => '3', 'tipo_dieta_id' => '2', 'hospital_id' => '4']);
+    Nino::create(['qr' => 'A1B2C3', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Uno',  'fecha_nacimiento' => '2007-01-19 00:00:00', 'edad'=>'13', 'sexo'=>'M', 'calle'=>'Jacarandas', 'numero'=>'15', 'localidad'=>'San Juan de las Manzanas', 'cp'=>'66278', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Ninguno', 'escolaridad_id' => '1', 'clasificacion_social_id' => '1', 'salario_minimo_id' => '1', 'zona_id' => '1',  'municipio' => 'Acatzingo', 'estado_id' => '12', 'pais_id' => '1', 'trabajador_social_id' => '1', 'tipo_dieta_id' => '2', 'hospital_id' => '1']);
+    Nino::create(['qr' => 'J1B2X7', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Dos',  'fecha_nacimiento' => '2008-01-19 00:00:00', 'edad'=>'12', 'sexo'=>'M', 'calle'=>'Tabachines', 'numero'=>'16', 'localidad'=>'San Juan de las Peras', 'cp'=>'66486', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Ninguno', 'escolaridad_id' => '2', 'clasificacion_social_id' => '2', 'salario_minimo_id' => '2', 'zona_id' => '2',  'municipio' => 'Acteopan', 'estado_id' => '12', 'pais_id' => '1', 'trabajador_social_id' => '2', 'tipo_dieta_id' => '1', 'hospital_id' => '3']);
+    Nino::create(['qr' => 'B1S2C3', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Tres',  'fecha_nacimiento' => '2009-01-19 00:00:00', 'edad'=>'11', 'sexo'=>'F', 'calle'=>'Primaveras', 'numero'=>'17', 'localidad'=>'San Juan de las Tunas', 'cp'=>'66147', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Maya', 'escolaridad_id' => '3', 'clasificacion_social_id' => '2', 'salario_minimo_id' => '2', 'zona_id' => '1',  'municipio' => 'Chichiquila', 'estado_id' => '12', 'pais_id' => '1', 'trabajador_social_id' => '1', 'tipo_dieta_id' => '2', 'hospital_id' => '1']);
+    Nino::create(['qr' => 'A9B215', 'nombre' => 'Ronald', 'apellido_paterno' => 'Mc', 'apellido_materno' => 'Cuatro',  'fecha_nacimiento' => '2010-01-19 00:00:00', 'edad'=>'10', 'sexo'=>'M', 'calle'=>'Bugambilias', 'numero'=>'18', 'localidad'=>'San Juan de los Duraznos', 'cp'=>'66299', 'primer_telefono'=>'7777777777', 'segundo_telefono'=>'8888888888', 'dialecto'=>'Ninguno', 'escolaridad_id' => '1', 'clasificacion_social_id' => '1', 'salario_minimo_id' => '1', 'zona_id' => '2',  'municipio' => 'Epatlán', 'estado_id' => '12', 'pais_id' => '1', 'trabajador_social_id' => '3', 'tipo_dieta_id' => '2', 'hospital_id' => '4']);
     
   }
 }

@@ -27,7 +27,7 @@ class QrController extends Controller
         $img = \Image::canvas(1072, 830);
         
         //-> Código QR
-        $ch = curl_init('https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='.urlencode('http://denisseregina.garcia/familias/'.$nino->qr));
+        $ch = curl_init('https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='.urlencode('http://casaronald.denissereginagarcia.com/familias/'.$nino->qr));
         $fp = fopen(storage_path('app/public/qr/qr.png'), 'wb');
         curl_setopt($ch, CURLOPT_FILE, $fp);
         curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -73,7 +73,7 @@ class QrController extends Controller
         });
 
         //-> Direccion
-        $direccion_nino = $nino->municipio['municipio'].', '.$nino->estado['estado'].', '.$nino->pais['pais'];
+        $direccion_nino = $nino->municipio.', '.$nino->estado['estado'].', '.$nino->pais['pais'];
         $img->text($direccion_nino, 581, 340, function($font){
             $font->file(storage_path("app/public/Raleway-Bold.ttf")); $font->color("#666666"); $font->size(18);
         });
@@ -131,7 +131,7 @@ class QrController extends Controller
         $dir_2 = "app/public/carnes/";
         $img->save(storage_path($dir_2).$nino->id.'.jpg', 95);
         //-> Regresamos la imagen
-        //return "<img src='"."http://localhost/casaronald/casaronald/storage/".$dir_2.$nino->qr.'.jpg'."?_=".mt_rand(1,10)."'>";
-        return "http://localhost/casaronald/casaronald/storage/".$dir_2.$nino->id.'.jpg';
+        //return "<img src='"."http://casaronald.denissereginagarcia.com/storage/".$dir_2.$nino->qr.'.jpg'."?_=".mt_rand(1,10)."'>";
+        return "http://casaronald.denissereginagarcia.com/storage/".$dir_2.$nino->id.'.jpg';
     }
 }

@@ -30,8 +30,6 @@ class CreateNinoTable extends Migration
             $table->string('segundo_telefono');
             $table->string('dialecto');
             
-            
-            
             $table->string('diagnostico')->nullable();
             $table->string('medico')->nullable();
             $table->string('alerg_alimentos')->nullable();
@@ -40,6 +38,7 @@ class CreateNinoTable extends Migration
             $table->string('observaciones')->nullable();
             $table->string('servicio')->nullable();
             $table->string('estatus_estancia')->nullable();
+            $table->string('municipio')->nullable();
             $table->date('fecha_solicitud')->nullable();
             $table->date('fecha_ingreso')->nullable();
             $table->date('fecha_salida')->nullable();
@@ -50,8 +49,6 @@ class CreateNinoTable extends Migration
             $table->foreign('tipo_dieta_id')->references('id')->on('tipo_dieta');
             $table->unsignedBigInteger('hospital_id');
             $table->foreign('hospital_id')->references('id')->on('hospital');
-            
-            
             
             $table->unsignedBigInteger('escolaridad_id');
             $table->foreign('escolaridad_id')->references('id')->on('escolaridad');
@@ -65,7 +62,7 @@ class CreateNinoTable extends Migration
             $table->foreign('pais_id')->references('id')->on('pais');
             $table->unsignedBigInteger('estado_id');
             $table->foreign('estado_id')->references('id')->on('estado');
-            $table->unsignedBigInteger('municipio_id');
+            $table->unsignedBigInteger('municipio_id')->nullable();
             $table->foreign('municipio_id')->references('id')->on('municipio');
             $table->timestamps();
         });

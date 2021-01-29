@@ -17,7 +17,7 @@
                         {{--Needs to be outside column in order to put image on right side--}}
                         <div class="col-md-12">
                             <div style="text-align: center">
-                                <img id="ficha" width="600" src="http://localhost/casaronald/casaronald/storage/app/public/carnes/A1B2C3.jpg?_=6" alt="">
+                                <img id="ficha" width="600" src="http://casaronald.denissereginagarcia.com/storage/app/public/carnes/A1B2C3.jpg?_=6" alt="">
                             </div>
                         </div>
                     </div>

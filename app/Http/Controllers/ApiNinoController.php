@@ -13,14 +13,60 @@ class ApiNinoController extends Controller
     /// Reglas de validación: https://laravel.com/docs/7.x/validation#available-validation-rules
     public function store(Request $request)
     {
-        $request->validate([
+        /*$request->validate([
             'qr' => 'required|string',
             'pais_id' => 'required|integer',
             'estado_id' => 'required|integer'
             //'municipio_id' => 'required|integer',
-        ]); 
+        ]); */
 
         $response = Nino::store($request);
+
+        if(!empty($response)){
+            return response()->json([
+                'status' => '1',
+                'title' => 'Nino agregada',
+                'msg' => 'Nino fue insertada correctamente',
+                'data' => $response
+            ], 201);
+        }
+        return response()->json([
+            'status' => '0',
+            'title' => 'Nino no agregada',
+            'msg' => 'Nino no añadida correctamente'
+        ], 200);
+    }
+
+    public function store2(Request $request)
+    {
+        /*
+        $request->validate([
+			'id' => 'required|integer', 
+			'qr' => 'required|string', 
+			'nombre' => 'required|string', 
+			'apellido_paterno' => 'required|string', 
+			'apellido_materno' => 'required|string',
+			'fecha_nacimiento' => 'required|date', 
+			'edad' => 'required|integer', 
+			'sexo' => 'required|string', 
+			'calle' => 'required|string', 
+			'numero' => 'required|string', 
+			'localidad' => 'required|string',
+			'cp' => 'required|integer', 
+			'primer_telefono' => 'required|string', 
+			'segundo_telefono' => 'required|string', 
+			'dialecto' => 'required|string',
+			'escolaridad_id' => 'required|integer', 
+			'clasificacion_social_id' => 'required|integer', 
+			'zona_id' => 'required|integer', 
+			'salario_minimo_id' => 'required|integer', 
+			'pais_id' => 'required|integer', 
+			'estado_id' => 'required|integer', 
+			'municipio_id ' => 'required|integer'
+
+        ]); */  
+
+        $response = Nino::store2($request);
 
         if(!empty($response)){
             return response()->json([
@@ -44,7 +90,14 @@ class ApiNinoController extends Controller
 
     public function getNinoByQr(Request $request){
         $nino = Nino::where('qr', $request->qr)->with(['pais','estado', 'municipio'])->first();
+        
         $response = array();
+        $x = new \stdClass();
+
+        if(empty($nino)){
+            return response()->json($x);
+        }
+
         $response['nombre_completo'] = $nino->nombre . " " . $nino->apellido_paterno . " " . $nino->apellido_materno;
 
         $response['estado'] = $nino->estado['estado'];
@@ -141,10 +194,8 @@ class ApiNinoController extends Controller
                 $response[$i]['id'] = $nino->id;
                 $response[$i]['nombre'] = $nino->nombre . " " . $nino->apellido_materno . " " . $nino->apellido_paterno;
                 $response[$i]['edad'] = $nino->edad;
-                $response[$i]['sexo'] = $nino->sexo;
                 $response[$i]['escolaridad'] = $nino->escolaridad['escolaridad'];
-                $response[$i]['estado'] = $nino->estado['estado'];
-                $response[$i]['municipio'] = $nino->municipio['municipio'];
+                $response[$i]['procedencia'] = $nino->municipio . ", " . $nino->estado['estado'];
                 $response[$i]['qr'] = $nino->qr;
             }
             return Datatables::of($response)

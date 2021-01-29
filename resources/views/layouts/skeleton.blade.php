@@ -32,10 +32,12 @@
         <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
         <link rel='shortcut icon' href="{{asset('favicon.ico')}}"/>
         <link rel="apple-touch-icon" sizes="180x180" href="{{asset('favicon.ico')}}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
 
         <!-- BEGIN SCRIPTS -->
         <script language="JavaScript" type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
+        <script src="{{ asset('js/jquery.slides.js') }}" defer></script>
 
         <!-- Bootstrap crazy things -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -57,6 +59,10 @@
         <!-- estilos prrones -->
         <link href="{{asset('css/style.css')}}" rel='stylesheet'>
         <link href="{{asset('css/style.css')}}" rel='stylesheet'>
+        <link rel="stylesheet" href="{{asset('css/home.css')}}">
+        <link rel="stylesheet" href="{{asset('css/slider.css')}}">
+        <link rel="stylesheet" href="{{asset('css/fondo.css')}}">
+        <link rel="stylesheet" href="{{asset('css/menu_registros.css')}}">
         
     </head>
     <body>

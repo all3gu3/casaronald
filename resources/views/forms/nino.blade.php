@@ -10,19 +10,17 @@
                 </div>
                 <div class="modal-body">
                     <div class="col-md-12">
-                        <form class="form-horizontal" id="formulario-solicitud" action="" method="POST" role="form">
+                        <form id="formulario-solicitud">
                         @csrf
-
                             <div class="row">
                                 <div class="col-md-12">
                                     <center><h4>Datos de solicitud</h4></center>
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <div class="col-md-3">
                                             <label for="fec_sol" class="input_group">Fecha de solicitud*:</label>
-                                            <input type="date" name="name" tab-index="1" required class="form-control" id="fec_sol" placeholder="Fecha">
+                                            <input type="date" name="fec_sol" tab-index="1" required class="form-control" id="fec_sol" placeholder="Fecha">
                                         </div>
-                                    <!--/div>
-                                    <div class="form-group"-->
+                                   
                                         <div class="col-md-9">
                                             <label class="input-group" for="estatus">Estatus de la estancia*:</label>
                                             <div class="col-md-4">
@@ -40,18 +38,23 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label for="hos" class="input_group">Hospital*:</label>
-                                            <input type="text" id="hospital" name="hos" tab-index="1" required class="form-control">
+                                            <label for="hos" class="input_group">Hospital:</label>
+                                            <select name="hos" class="form-control">
+                                                @foreach($hospitales as $h)
+                                                    <option value="{{ $h->id }}">{{ $h->hospital }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="serv" class="input_group">Servicio*:</label>
+                                            <label for="serv" class="input_group">Servicio:</label>
                                             <input type="text" id="servicio" name="serv" tab-index="1" required class="form-control">
                                         </div>
                                     </div>
+
                                     <center><h4>Datos generales</h4></center>
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <div class="col-md-6">
                                             <label class="input-group" for="apellidop">Apellido Paterno:</label>
                                             <input tab-index="1" required class="form-control"  type="text" id="apellidop" name="app">
@@ -61,7 +64,7 @@
                                             <input tab-index="1" required class="form-control"  type="text" id="apellidom" name="apm">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <div class="col-md-9">
                                             <label class="input-group" for="nombre">Nombre(s):</label>
                                             <input tab-index="1" required class="form-control"  type="text" id="nombre" name="nombre">
@@ -71,24 +74,13 @@
                                             <input tab-index="1" required class="form-control"  type="number" id="edad" name="edad">
                                         </div>
                                     </div>
-                                    <!--div class="form-group">
-                                        <div class="col-md-6">
-                                            <label class="input_group" for="fecnac">Fecha de nacimiento:</label>
-                                            <input tab-index="1" required class="form-control"  type="date" id="fecnac" name="fecha_nac">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="inputEmail1" class="input-group">Foto de la familia</label>
-                                            <input type="file" classs="form-control-file blockWhenEdit" name="image" id="image" placeholder="Imagen">
-                                        </div>
-                                    </div-->
 
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <div class="col-md-3">
-                                            <label for="fec_sol" class="input_group">Fecha de nacimiento:</label>
-                                            <input type="date" name="name" tab-index="1" required class="form-control" id="fec_sol" placeholder="Fecha">
+                                            <label for="fec_nac" class="input_group">Fecha de nacimiento:</label>
+                                            <input type="date" name="fec_nac" tab-index="1" required class="form-control" id="fec_nac" placeholder="Fecha">
                                         </div>
-                                    <!--/div>
-                                    <div class="form-group"-->
+                                   
                                         <div class="col-md-9">
                                             <label class="input-group" for="estatus">Género:</label>
                                             <div class="col-md-4">
@@ -105,22 +97,83 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-group">
+                                    <center><h4>Dirección</h4></center>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label class="input_group" for="pais">País:</label>
+                                            <select name="pais" class="form-control">
+                                                @foreach($paises as $p)
+                                                    <option value="{{ $p->id }}">{{ $p->pais }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="input_group" for="est">Estado:</label>
+                                            <select name="est" class="form-control">
+                                                @foreach($estados as $e)
+                                                    <option value="{{ $e->id }}">{{ $e->estado }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="input_group" for="mun">Municipio:</label>
+                                            <input tab-index="1" required class="form-control"  type="text" id="mun" name="mun">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-5">
+                                            <label class="input_group" for="calle">Calle:</label>
+                                            <input tab-index="1" required class="form-control"  type="text" id="calle" name="calle">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="input_group" for="num_c">Numero:</label>
+                                            <input tab-index="1" required class="form-control"  type="text" id="num_c" name="num_c">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label class="input_group" for="col">Colonia:</label>
+                                            <input tab-index="1" required class="form-control"  type="text" id="col" name="col">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label class="input_group" for="loca">Localidad:</label>
+                                            <input tab-index="1" required class="form-control"  type="text" id="loca" name="loca">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="input_group" for="cp">CP:</label>
+                                            <input tab-index="1" required class="form-control"  type="number" id="cp" name="cp" max="99999" min="9999">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="input_group" for="zona">Zona:</label>
+                                            <select name="zona" class="form-control">
+                                                @foreach($zonas as $z)
+                                                    <option value="{{ $z->id }}">{{ $z->zona }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <label class="input_group" for="tel1">Teléfono 1:</label>
+                                            <input tab-index="1" required class="form-control"  type="text" id="tel1" name="tel1">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="input_group" for="tel2">Teléfono 2:</label>
+                                            <input tab-index="1" required class="form-control"  type="text" id="tel2" name="tel2">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="input_group" for="dial">Dialecto:</label>
+                                            <input tab-index="1" required class="form-control"  type="text" id="dial" name="dial">
+                                        </div>
+                                    </div>
+                                    <center><h4>Datos socio económicos</h4></center>
+                                    <div class="form-group row">
                                         <div class="col-md-5">
                                             <label class="input_group" for="esc">Escolaridad:</label>
-                                            <select name="esc" size="1" class="form-control customeSelect2 select-escolaridad" multiple="multiple" data-ajax--url="search-escolaridad">
-                                                <option value="Sin escuela">Sin escuela</option>
-                                                <option value="Maternal">Maternal</option>
-                                                <!--option value="Kinder">Kinder</option>
-                                                <option value="Primaria">Primaria</option>
-                                                <option value="Secundaria">Secundaria</option>
-                                                <option value="Preparatoria/Bachiller">Preparatoria/Bachiller</option>
-                                                <option value="Carrera Técnica">Carrera Técnica</option>
-                                                <option value="Licenciatura">Licenciatura</option>
-                                                <option value="Maestría">Maestría</option>
-                                                <option value="Doctorado">Doctorado</option>
-                                                <option value="Educación inicial">Educación inicial</option-->
+                                            <select name="esc" class="form-control">
+                                                @foreach($escolaridades as $e)
+                                                    <option value="{{ $e->id }}">{{ $e->escolaridad }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="col-md-7">
@@ -137,79 +190,26 @@
                                             </datalist>
                                         </div>
                                     </div>
-                                    <center><h4>Dirección</h4></center>
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <label class="input_group" for="pais">País:</label>
-                                            <select name="pais" size="1" class="form-control customeSelect2 select-pais" multiple="multiple" data-ajax--url="search-pais">
-                                                <option value="">...</option>
-                                                <option value="México">México</option>
-                                                <option value="Belice">Belice</option>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label class="input_group" for="sal_min">Salario mínimo:</label>
+                                            <select name="sal_min" class="form-control">
+                                                @foreach($salario as $s)
+                                                    <option value="{{ $s->id }}">{{ $s->salario_minimo }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label class="input_group" for="est">Estado:</label>
-                                            <select name="est" size="1" class="form-control customeSelect2 select-estado" multiple="multiple" data-ajax--url="search-estado">
-                                                <option value="">...</option>
-                                                <option value="Puebla">Puebla</option>
-                                                <option value="CDMX">CDMX</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="input_group" for="mun">Municipio:</label>
-                                            <select name="mun" size="1" class="form-control customeSelect2 select-mun" multiple="multiple" data-ajax--url="search-mun">
-                                                <option value="">...</option>
-                                                <option value="Puebla">Puebla</option>
+                                        <div class="col-md-6">
+                                            <label class="input_group" for="trab">Trabajador Social:</label>
+                                            <select name="trab" class="form-control">
+                                                @foreach($trabajadores as $t)
+                                                    <option value="{{ $t->id }}">{{ $t->trabajador_social }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-md-5">
-                                            <label class="input_group" for="calle">Calle:</label>
-                                            <input tab-index="1" required class="form-control"  type="text" id="calle" name="calle">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label class="input_group" for="num_c">Numero:</label>
-                                            <input tab-index="1" required class="form-control"  type="text" id="num_c" name="num_c">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label class="input_group" for="col">Colonia:</label>
-                                            <input tab-index="1" required class="form-control"  type="text" id="col" name="col">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <label class="input_group" for="loca">Localidad:</label>
-                                            <input tab-index="1" required class="form-control"  type="text" id="loca" name="loca">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="input_group" for="cp">CP:</label>
-                                            <input tab-index="1" required class="form-control"  type="number" id="cp" name="cp" max="99999" min="9999">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="input_group" for="zona">Zona:</label>
-                                            <select name="zona" size="1" class="form-control customeSelect2 select-mun" multiple="multiple" data-ajax--url="search-mun">
-                                                <option value="Rural">Rural</option>
-                                                <option value="Sub-urbana">Sub-urbana</option>
-                                                <option value="Urbana">Urbana</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <label class="input_group" for="tel1">Teléfono 1:</label>
-                                            <input tab-index="1" required class="form-control"  type="text" id="tel1" name="tel1">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="input_group" for="tel2">Teléfono 2:</label>
-                                            <input tab-index="1" required class="form-control"  type="text" id="tel2" name="tel2">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="input_group" for="dial">Dialecto:</label>
-                                            <input tab-index="1" required class="form-control"  type="text" id="dial" name="dial">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
+                                    <center><h4>Datos médicos</h4></center>
+                                    <div class="form-group row">
                                         <div class="col-md-6">
                                             <label class="input-group" for="nombre">Medico:</label>
                                             <input tab-index="1" required class="form-control"  type="text" id="medico" name="medico">
@@ -219,122 +219,124 @@
                                             <input tab-index="1" required class="form-control"  type="text" id="diag" name="diag">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label class="input_group" for="sal_min">Salario mínimo:</label>
-                                            <select name="sal_min" size="1" class="form-control customeSelect2 select-sal_min" multiple="multiple" data-ajax--url="search-sal_min">
-                                                <option value="1">Menor a 1</option>
-                                                <option value="2">1 a 2</option>
-                                                <option value="3">Mayor a 2</option>
-                                            </select>
+                                            <label for="ale_alim" class="input_group">Alergias en alimentos:</label>
+                                            <input type="text" id="ale_alim" name="ale_alim" tab-index="1" class="form-control">
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="input_group" for="trab">Trabajador Social:</label>
-                                            <select name="trab" size="1" class="form-control customeSelect2 select-trab" multiple="multiple" data-ajax--url="search-trab">
-                                                <option value="Rural">...</option>
-                                            </select>
+                                            <label for="ale_med" class="input_group">Alergias en medicamentos:</label>
+                                            <input type="text" id="ale_med" name="ale_med" tab-index="1" class="form-control">
                                         </div>
                                     </div>
                                     <center><h4>Tratamiento</h4></center>
-                                    <div class="form-group"> 
+                                    <div class="form-group row"> 
                                         <div class="col-md-4">
-                                            <input type="checkbox" name="terapia" id="terapia" value=0>
-                                            <label class="input_group" for="terapia">Terapia</label><br>
+                                            <input type="checkbox" name="tt" id="tt_terapia" value=1>
+                                            <label class="input_group" for="tt_terapia">Terapia</label><br>
                                                 
-                                            <input type="checkbox" name="tratamiento" id="tratamiento" value=0>
-                                            <label class="input_group" for="tratamiento">Tratamiento</label><br>
+                                            <input type="checkbox" name="tt" id="tt_tratamiento" value=2>
+                                            <label class="input_group" for="tt_tratamiento">Tratamiento</label><br>
                                                 
-                                            <input type="checkbox" name="est_lab" id="est_lab" value=0>
-                                            <label class="input_group" for="est_lab">Estudios de laboratorio</label><br>
+                                            <input type="checkbox" name="tt" id="tt_est_lab" value=3>
+                                            <label class="input_group" for="tt_est_lab">Estudios de laboratorio</label><br>
                                                 
-                                            <input type="checkbox" name="val_med" id="val_med" value=0>
-                                            <label class="input_group" for="val_med">Valoracion Medica</label><br>
+                                            <input type="checkbox" name="tt" id="tt_val_med" value=4>
+                                            <label class="input_group" for="tt_val_med">Valoracion Medica</label><br>
                                                 
-                                            <input type="checkbox" name="est_gab" id="est_gab" value=0>
-                                            <label class="input_group" for="est_gab">Estudios de Gabinete</label><br>
+                                            <input type="checkbox" name="tt" id="tt_est_gab" value=5>
+                                            <label class="input_group" for="tt_est_gab">Estudios de Gabinete</label><br>
                                                 
-                                            <input type="checkbox" name="rehab" id="rehab" value=0>
-                                            <label class="input_group" for="rehab">Rehabilitacion</label><br>
+                                            <input type="checkbox" name="tt" id="tt_rehab" value=6>
+                                            <label class="input_group" for="tt_rehab">Rehabilitacion</label><br>
                                                 
                                         </div>
 
                                         <div class="col-md-4">
-                                            <input type="checkbox" name="cons_ext" id="cons_ext" value=0>
-                                            <label class="input_group" for="cons_ext">Consulta externa</label><br>
+                                            <input type="checkbox" name="tt" id="tt_cons_ext" value=7>
+                                            <label class="input_group" for="tt_cons_ext">Consulta externa</label><br>
                                                 
-                                            <input type="checkbox" name="cirugia" id="cirugia" value=0>
-                                            <label class="input_group" for="cirugia">Cirugia</label><br>
+                                            <input type="checkbox" name="tt" id="tt_cirugia" value=8>
+                                            <label class="input_group" for="tt_cirugia">Cirugia</label><br>
 
-                                            <input type="checkbox" name="obs_urg" id="obs_urg" value=0>
-                                            <label class="input_group" for="obs_urg">Observacion-Urgencias</label><br>
+                                            <input type="checkbox" name="tt" id="tt_obs_urg" value=9>
+                                            <label class="input_group" for="tt_obs_urg">Observacion-Urgencias</label><br>
                                                 
-                                            <input type="checkbox" name="pre_hosp" id="pre_hosp" value=0>
-                                            <label class="input_group" for="pre_hosp">Pre-Hospitalizacion</label><br>
+                                            <input type="checkbox" name="tt" id="tt_pre_hosp" value=10>
+                                            <label class="input_group" for="tt_pre_hosp">Pre-Hospitalizacion</label><br>
                                                 
-                                            <input type="checkbox" name="hospita" id="hospita" value=0>
-                                            <label class="input_group" for="hospita">Hospitalizacion</label><br>
+                                            <input type="checkbox" name="tt" id="tt_hospita" value=11>
+                                            <label class="input_group" for="tt_hospita">Hospitalizacion</label><br>
 
-                                            <input type="checkbox" name="ucin" id="ucin" value=0>
-                                            <label class="input_group" for="ucin">Terapia UCIN</label><br>
+                                            <input type="checkbox" name="tt" id="tt_ucin" value=12>
+                                            <label class="input_group" for="tt_ucin">Terapia UCIN</label><br>
 
                                         </div>
                                         
                                         <div class="col-md-4">
                                                 
-                                            <input type="checkbox" name="t_int" id="t_int" value=0>
-                                            <label class="input_group" for="t_int">Terapia T int</label><br>
+                                            <input type="checkbox" name="tt" id="tt_t_int" value=13>
+                                            <label class="input_group" for="tt_t_int">Terapia T int</label><br>
                                                 
-                                            <input type="checkbox" name="ucia" id="ucia" value=0>
-                                            <label class="input_group" for="ucia">Terapia UCIA</label><br>
+                                            <input type="checkbox" name="tt" id="tt_ucia" value=14>
+                                            <label class="input_group" for="tt_ucia">Terapia UCIA</label><br>
                                                 
-                                            <input type="checkbox" name="post" id="post" value=0>
-                                            <label class="input_group" for="post">Post-Hospitalizacion</label><br>
+                                            <input type="checkbox" name="tt" id="tt_post" value=15>
+                                            <label class="input_group" for="tt_post">Post-Hospitalizacion</label><br>
                                                 
-                                            <input type="checkbox" name="otro" id="otro" value=0>
-                                            <label class="input_group" for="otro">Otro</label><br>  
+                                            <input type="checkbox" name="tt" id="tt_otro" value=16>
+                                            <label class="input_group" for="tt_otro">Otro</label><br>  
                                         </div>    
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <div class="col-md-7">
                                             <label class="input_group " for="obs">Observaciones:</label><br>
                                             <textarea name="obs" rows="4" cols="50" placeholder="Observaciones"></textarea>
                                         </div>
                                         <div class="col-md-5">
                                             <label class="input_group " for="diet">Tipo de dieta:</label>
-                                            <select name="diet" size="1" class="form-control customeSelect2 select-sal_diet" multiple="multiple" data-ajax--url="search-diet">
-                                                <option value="Normal">Normal</option>
-                                                <option value="Blanda">Blanda</option>
+                                            <select name="diet" class="form-control">
+                                                @foreach($dietas as $d)
+                                                    <option value="{{ $d->id }}">{{ $d->tipo_dieta }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <div class="col-md-6">
                                             <label class="input-group" for="fec_ing">Fecha de ingreso:</label>
-                                            <input tab-index="1" required class="form-control"  type="date" id="fec_ing">
+                                            <input tab-index="1" name="fec_ing" class="form-control"  type="date" id="fec_ing">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="input-group" for="fec_sal">Fecha de salida:</label>
-                                            <input tab-index="1" required class="form-control"  type="date" id="fec_sal">
+                                            <input tab-index="1" name="fec_sal" class="form-control"  type="date" id="fec_sal">
                                         </div>
                                     </div>
-
+                                    <div class="form-group row">
+                                        <div class="col-md-7">
+                                            <label for="imagen" class="input-group">Foto del niño</label>
+                                            <input type="file" classs="form-control-file" name="image" id="image" placeholder="Imagen">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="col-md-3 col-offset-3">
+                                                <div class="form-group row">
+                                                    <img id="product_image" src="#" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-md-12" style="text-align: center;"> 
+                                        <button type="submit" id="guarda-form" class="btn botoncito">Guardar</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                    </div>
                                 </div>
-                                {{--Needs to be outside column in order to put image on right side--}}
-                                <!--div class="col-md-5">
-                                    <div class="col-md-3 col-offset-3">
-                                        <div class="form-group">
-                                            <img id="product_image" src="#" alt="">
-                                        </div>
-                                    </div>
-                                </div-->
                             </div>
-
                         </form>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn botoncito">Guardar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <h4>© RMHC</h4>
                 </div>
             </div>
         </div>
@@ -342,6 +344,18 @@
 </div>
 
 <script>
+    $(document).ready(function(){
+        $("#formulario-solicitud").submit(function(e){
+            e.preventDefault();
+            $.post("{{route('add-nino')}}", $("#formulario-solicitud").serialize(), function(respuesta){
+                toastr.success('El registro se realizó exitosamente.', 'Niño nuevo agregado', {timeOut: 5000});
+                $("#myModal").modal("hide");
+                var table = $('#data-table-ninos').DataTable();
+                table.ajax.reload();
+            }); 
+        });
+    });
+
     function readURL(input) {
         alert('aAAAa');
         if (input.files && input.files[0]) {

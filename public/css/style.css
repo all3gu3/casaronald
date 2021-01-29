@@ -38,6 +38,14 @@ body{
   .botoncito{
     background-color: #FFC829;
   }
+  .agregarr{
+    background-color: #FFC829;
+    margin-left: 20px;
+  }
+  .verr{
+    background-color: #4872ae;
+    margin-left: 10px;
+  }
 
   .left_area h3{
     color: #fff;
@@ -51,11 +59,12 @@ body{
     color: #FFC829;
   }
 
-  .tablita{
-    margin-left: 12.6%;
-  }
   .container{
-    margin-left: 12.6%;
+    margin-left: 14%;
+    box-shadow:0 5px 5px 3px rgba(0, 0, 0, 0.25);
+  }
+  .container-2{
+    margin-left: 12%;
   }
   
   .logout_btn{

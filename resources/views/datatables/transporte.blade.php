@@ -7,9 +7,9 @@
 @section('description-td', 'Expediente Fundación Casa Ronald McDonald y sistema de registro de entradas y salidas')
 @section('content')
 	@include('parts.sidebar')
-    <div class="container" id="comedor" style="background-color: white">
-        <h1>Registros | Comedor</h1>
-        <table class="table table-bordered data-table" id="data-table-comedor">
+    <div class="container" id="transporte" style="background-color: white">
+        <h1>Registros | Transporte</h1>
+        <table class="table table-bordered data-table" id="data-table-transporte">
             <thead>
                 <tr>
                     <th>N°</th>
@@ -25,10 +25,10 @@
     </div>
     <script>
         $(function () {
-            var table = $('#data-table-comedor').DataTable({
+            var table = $('#data-table-transporte').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('get-comedor-datatable') }}",
+                ajax: "{{ route('get-transporte-datatable') }}",
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'QR', name: 'QR'},
