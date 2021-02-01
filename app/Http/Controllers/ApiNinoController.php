@@ -84,12 +84,12 @@ class ApiNinoController extends Controller
     }
 
     public function getNino($id){
-        $nino = Nino::where('id', $id)->with(['pais','estado', 'municipio'])->first();
+        $nino = Nino::where('id', $id)->with(['pais','estado'])->first();
         return response()->json($nino);
     }
 
     public function getNinoByQr(Request $request){
-        $nino = Nino::where('qr', $request->qr)->with(['pais','estado', 'municipio'])->first();
+        $nino = Nino::where('qr', $request->qr)->with(['pais','estado'])->first();
         
         $response = array();
         $x = new \stdClass();
@@ -101,7 +101,7 @@ class ApiNinoController extends Controller
         $response['nombre_completo'] = $nino->nombre . " " . $nino->apellido_paterno . " " . $nino->apellido_materno;
 
         $response['estado'] = $nino->estado['estado'];
-        $response['municipio'] = $nino->municipio['municipio'];
+        $response['municipio'] = $nino->municipio;
 
         if($nino->sexo == 'M') { $response['sexo'] = "Masculino";}
         else if($nino->sexo == 'F') { $response['sexo'] = "Femenino";}

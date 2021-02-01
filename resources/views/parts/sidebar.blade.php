@@ -11,7 +11,7 @@
     <br>
     <a href="{{ route('registros') }}"><i class="fas fa-address-book"></i><span>Registros</span></a>
     <br>
-    <a href="{{ route('operaciones') }}"><i class="fas fa-calendar"></i><span>Operación</span></a>
+    <!--a href="{{-- route('operaciones') --}}"><i class="fas fa-calendar"></i><span>Operación</span></a-->
     
 </div>
 <!--sidebar end-->

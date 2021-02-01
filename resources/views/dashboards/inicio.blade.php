@@ -8,13 +8,14 @@
             <h1>¡BIENVENIDOS!</h1>
             <h3>Fundación Infantil Ronald McDonald México</h3>
         </div>
-
-        <div class="slides" >
-            <img src="{{asset('img/a.png')}}" alt="">
-            <img src="{{asset('img/b.jpg')}}" alt="">
-            <img src="{{asset('img/c.jpg')}}" alt="">
-            <img src="{{asset('img/d.jpg')}}" alt="">
-        </div>
+	<div class="contenedor">
+            <div class="slides" >
+                <img src="{{asset('img/a.png')}}" alt="">
+                <img src="{{asset('img/b.jpg')}}" alt="">
+                <img src="{{asset('img/c.jpg')}}" alt="">
+                <img src="{{asset('img/d.jpg')}}" alt="">
+            </div>
+    </div>
     </article>
     <article>
         <div class="saludo">
@@ -23,7 +24,7 @@
         </div>
         <div class="contenedor">
             <div class="contenedor_tarjeta">
-                <a href="#">
+                <a href="{{ route('familias') }}">
                     <figure id="tarjeta">
                         <div class="frontal" id="r1" align="center">
                             <i class="fa fa-plus-circle fa-5x"></i>
@@ -37,7 +38,7 @@
             </div>
 
             <div class="contenedor_tarjeta">
-                <a href="#">
+                <a href="{{ route('familias') }}">
                     <figure id="tarjeta">
                         <div class="frontal" id="r2" align="center">
                             <i class="fa fa-users fa-5x" aria-hidden="true"></i>
@@ -51,7 +52,7 @@
             </div>
 
             <div class="contenedor_tarjeta">
-                <a href="#">
+                <a href="{{ route('registros') }}">
                     <figure id="tarjeta">
                         <div class="frontal" id="r3" align="center">
                             <i class="fa fa-search fa-5x"></i>

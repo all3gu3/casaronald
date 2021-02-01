@@ -32,7 +32,9 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'QR', name: 'QR'},
-                    {data: 'servicio', name: 'servicio'},
+                    {data: 'servicio', name:'servicio_icon', render:function(data){
+                        return '<button class="button" id="r1"><i class="fa fa-tint"></i></button>';
+                    }},
                     {data: 'fecha_hora', name: 'fecha_hora'},
                 ]
             });

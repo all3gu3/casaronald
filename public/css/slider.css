@@ -1,9 +1,7 @@
  .slides {
-	width:800px;
+    width:800px;
     border: 5px;
-    border-color: black;
-    margin-left: 14%;
-    
+    border-color: black;    
 }
  
 .slides img {
@@ -29,15 +27,15 @@
 }
  
 .slidesjs-pagination li a:hover {
-	background-color: whitesmoke;
+	background-color: #ffc72c;
 }
  
 .slides .active {
-	background-color: whitesmoke;
+	background-color: #ffc72c;
 }
  
 .slidesjs-navigation{
-	background-color: whitesmoke;
+	background-color: #ffc72c;
 	color:fff;
 	text-decoration:none;
 	display:inline-block;

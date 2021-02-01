@@ -44,7 +44,7 @@ Route::post('/add-acompanante', 'App\Http\Controllers\ApiAcompananteController@s
 /* Rutas para scripts de inserción */ 
 Route::get('/add-acompanante-script', 'App\Http\Controllers\ApiAcompananteController@store2')->name('add-acompanante-script');
 Route::get('/add-nino-script', 'App\Http\Controllers\ApiNinoController@store2')->name('add-nino-script');
-Route::get('/add-registro-script', 'App\Http\Controllers\ApiRegistroController@store2')->name('add-registro-script');
+Route::get('/add-registro-script', 'App\Http\Controllers\ApiRegistroOperativoController@store2')->name('add-registro-script');
 
 /*Registros*/
 Route::get('/add-entrada-salida', 'App\Http\Controllers\ApiRegistrosController@storeEntradasSalidas')->name('add-entrada-salida');
